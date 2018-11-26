@@ -1,0 +1,62 @@
+<div class="container">
+    <table class="table table-hover table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="10">
+        <thead>
+            <tr>
+                <th style="width: 20%">
+                    <mfDefaultSorter by="name">UserName</mfDefaultSorter>
+                </th>
+                <th style="width: 40%">
+                    <mfDefaultSorter by="email">UserEmail</mfDefaultSorter>
+                </th>
+                <th style="width: 10%">
+                    <mfDefaultSorter by="age">Age</mfDefaultSorter>
+                </th>
+                <th style="width: 20%">
+                    <mfDefaultSorter by="city">User City</mfDefaultSorter>
+                </th>
+                <th style="width: 30%">
+                    <mfDefaultSorter by="age">Action</mfDefaultSorter>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of mf.data">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td class="text-right">{{user.age}}</td>
+                <td>{{user.city | uppercase}}</td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" (click)='editUser(user.id)'>Edit</button>
+                    <button type="button" class="btn btn-warning btn-sm" (click)='deleteUser(user.id)'>Del</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <mfBootstrapPaginator></mfBootstrapPaginator>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
