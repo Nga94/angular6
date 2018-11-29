@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { hocsinh } from '../../hocsinh';
 import { Router } from "@angular/router";
-import { fakeUser } from './fake-user';
-import { userService, UserService } from './user.service';
+import { UserService } from './user.service';
 
 @Component({
     selector: 'user-list',
@@ -11,16 +10,17 @@ import { userService, UserService } from './user.service';
 })
 export class UserComponent implements OnInit {
     public data: hocsinh[];
+    constructor(public router: Router, private userService: UserService) { }
 
-    getUser(): hocsinh[] {
+    getUserFromService(): void {
         this.data = this.userService.getUser();
     }
 
     ngOnInit() {
-        this.getUser();
+        this.getUserFromService();
     }
 
-    constructor(public router: Router) { }
+    
 
     public gotoUserDetails(url, id) {
         this.router.navigate([url, id]).then(e => {

@@ -1,5 +1,4 @@
 import { hocsinh } from '../../hocsinh';
-import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
 export var fakeUser:hocsinh[] = [
     {
         id: "M1",
